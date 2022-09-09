@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol LogoutDelegate : AnyObject {
+    func didLogout()
+}
+
+protocol LoginViewControllerDelegate : AnyObject {
+    func didLogin()
+}
+
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()
@@ -14,6 +22,8 @@ class LoginViewController: UIViewController {
     let labelErrorMessage = UILabel()
     let labelTitle = UILabel()
     let labelSubtitle = UILabel()
+    
+    weak var delegate : LoginViewControllerDelegate?
     
     var username : String? {
         return loginView.tfUsername.text
@@ -128,6 +138,7 @@ extension LoginViewController {
         }
         
         if username == "Bryan" && password == "bryan123" {
+            delegate?.didLogin()
         } else {
             configureView(withMessage: "Incorrect username / password ")
         }

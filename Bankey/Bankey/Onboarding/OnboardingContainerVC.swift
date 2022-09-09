@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol OnboardingContainerVCDelegate : AnyObject {
+    func didFinishOnboarding()
+}
+
 class OnboardingContainerViewController: UIViewController {
 
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
-    var currentVC: UIViewController {
-        didSet {
-        }
-    }
+    var currentVC: UIViewController
+    let btnClose = UIButton(type: .system)
+    let btnDone  = UIButton(type: .system)
+    
+    weak var delegateOnboarding : OnboardingContainerVCDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -40,6 +45,12 @@ class OnboardingContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+        style()
+        layout()
+    }
+    
+    private func setup(){
         view.backgroundColor = .systemPurple
         
         addChild(pageViewController)
@@ -58,6 +69,37 @@ class OnboardingContainerViewController: UIViewController {
         
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
+    }
+    
+    private func style(){
+        btnClose.translatesAutoresizingMaskIntoConstraints = false
+        btnClose.setTitle("Close", for: [])
+        btnClose.addTarget(self, action: #selector(btnCloseTapped), for: .primaryActionTriggered)
+        
+        btnDone.translatesAutoresizingMaskIntoConstraints = false
+        btnDone.setTitle("Done", for: [])
+        btnDone.addTarget(self, action: #selector(btnDoneTapped), for: .primaryActionTriggered)
+    }
+    
+    private func layout(){
+        view.addSubview(btnClose)
+        view.addSubview(btnDone)
+        btnDone.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            btnClose.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            btnClose.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
+        
+        NSLayoutConstraint.activate([
+//            btnDone.trailingAnchor.constraint(equalToSystemSpacingAfter: pageViewController.view.trailingAnchor, multiplier: 2),
+            
+            pageViewController.view.trailingAnchor.constraint(equalToSystemSpacingAfter: btnDone.trailingAnchor, multiplier: 2),
+            
+            pageViewController.view.bottomAnchor.constraint(equalToSystemSpacingBelow: btnDone.bottomAnchor, multiplier: 8)
+            
+//            btnDone.bottomAnchor.constraint(equalToSystemSpacingBelow: pageViewController.view.bottomAnchor, multiplier: 2)
+        ])
     }
 }
 
@@ -81,6 +123,12 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     private func getNextViewController(from viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil }
         currentVC = pages[index + 1]
+        
+        // last page
+        if (index + 1) == pages.count - 1 {
+            btnDone.isHidden = false
+        }
+        
         return pages[index + 1]
     }
 
@@ -93,3 +141,14 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     }
 }
 
+
+// MARK: - Actions
+extension OnboardingContainerViewController {
+    @objc func btnCloseTapped(_ sender : UIButton){
+        delegateOnboarding?.didFinishOnboarding()
+    }
+    
+    @objc func btnDoneTapped(_ sender: UIButton){
+        delegateOnboarding?.didFinishOnboarding()
+    }
+}

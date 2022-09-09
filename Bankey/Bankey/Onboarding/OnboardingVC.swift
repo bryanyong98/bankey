@@ -15,7 +15,8 @@ class OnboardingVC: UIViewController {
     
     let heroImageName : String
     let titleText     : String
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -34,6 +35,7 @@ class OnboardingVC: UIViewController {
     }
 }
 
+// MARK: - Style and Layout
 extension OnboardingVC {
     
     func style(){
@@ -71,3 +73,4 @@ extension OnboardingVC {
         ])
     }
 }
+
