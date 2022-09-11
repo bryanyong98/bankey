@@ -18,6 +18,7 @@
 		4E946C9E28CB40AB001E6FAB /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E946C9D28CB40AB001E6FAB /* LocalState.swift */; };
 		4E946CA228CCA631001E6FAB /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E946CA128CCA631001E6FAB /* UIViewController+Utils.swift */; };
 		4E946CA528CCA782001E6FAB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E946CA428CCA782001E6FAB /* MainViewController.swift */; };
+		4EA4078328CDA329003EA5A1 /* AccountSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4078228CDA329003EA5A1 /* AccountSummaryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4E946C9D28CB40AB001E6FAB /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		4E946CA128CCA631001E6FAB /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		4E946CA428CCA782001E6FAB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4EA4078228CDA329003EA5A1 /* AccountSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				4E7FE7C128C4AA2F00D35AB9 /* Login */,
 				4E4A909A28C6392A009BF7A0 /* Onboarding */,
+				4EA4078128CDA300003EA5A1 /* AccountSummary */,
 				4E7FE7C028C4AA0300D35AB9 /* Files */,
 				4E946C9C28CB4099001E6FAB /* Utils  */,
 				4E7FE7A828C4A74800D35AB9 /* AppDelegate.swift */,
@@ -112,6 +115,14 @@
 				4E946CA128CCA631001E6FAB /* UIViewController+Utils.swift */,
 			);
 			path = "Utils ";
+			sourceTree = "<group>";
+		};
+		4EA4078128CDA300003EA5A1 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				4EA4078228CDA329003EA5A1 /* AccountSummaryVC.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 				4E946CA528CCA782001E6FAB /* MainViewController.swift in Sources */,
 				4E7FE7AD28C4A74800D35AB9 /* LoginViewController.swift in Sources */,
 				4E7FE7A928C4A74800D35AB9 /* AppDelegate.swift in Sources */,
+				4EA4078328CDA329003EA5A1 /* AccountSummaryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,8 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
         onboardingViewController.delegateOnboarding = self
         dummyViewController.delegateLogout = self
-        window?.rootViewController = mainViewController
-
+//        window?.rootViewController = mainViewController
+        window?.rootViewController = AccountSummaryVC()
+        
         mainViewController.selectedIndex = 0
         return true
     }
