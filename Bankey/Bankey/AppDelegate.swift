@@ -26,14 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .systemBackground
-//        window?.rootViewController = LoginViewController()
+
         loginViewController.delegate = self
         onboardingViewController.delegateOnboarding = self
-        dummyViewController.delegateLogout = self
-//        window?.rootViewController = mainViewController
-        window?.rootViewController = AccountSummaryVC()
+
+        let vc = mainViewController
+        vc.setStatusBar()
         
-        mainViewController.selectedIndex = 0
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = appColor
+        
+        window?.rootViewController = vc
+        
         return true
     }
 }

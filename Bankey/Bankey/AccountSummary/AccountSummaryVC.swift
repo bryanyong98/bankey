@@ -37,6 +37,7 @@ extension AccountSummaryVC {
     private func setupTableView(){
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = appColor
         
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseId)
         tableView.rowHeight = AccountSummaryCell.rowHeight
