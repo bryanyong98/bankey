@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
         onboardingViewController.delegateOnboarding = self
         registerNotifications()
-        displayNextScreen()
+        displayLogin()
         
         return true
     }

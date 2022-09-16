@@ -78,7 +78,7 @@ extension AccountSummaryCell {
         lblName.translatesAutoresizingMaskIntoConstraints = false
         lblName.font = UIFont.preferredFont(forTextStyle: .body)
         lblName.adjustsFontForContentSizeCategory = true
-//        lblName.adjustsFontSizeToFitWidth = true
+        lblName.adjustsFontSizeToFitWidth = true
         lblName.text = "Account Name"
     
         stackViewBalance.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ extension AccountSummaryCell {
         lblBalance.translatesAutoresizingMaskIntoConstraints = false
         lblBalance.font = UIFont.preferredFont(forTextStyle: .body)
         lblBalance.textAlignment = .right
-//        lblBalance.adjustsFontSizeToFitWidth = true
+        lblBalance.adjustsFontSizeToFitWidth = true
         lblBalance.text = "Some balance"
         
         lblBalanceAmount.translatesAutoresizingMaskIntoConstraints = false
