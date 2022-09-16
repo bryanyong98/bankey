@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let loginViewController      = LoginViewController()
     let onboardingViewController = OnboardingContainerViewController()
-    let dummyViewController      = DummyViewController()
     let mainViewController       = MainViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -29,10 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         loginViewController.delegate = self
         onboardingViewController.delegateOnboarding = self
-
-        displayLogin()
+        registerNotifications()
+        displayNextScreen()
         
         return true
+    }
+    
+    private func registerNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
     }
     
     private func displayLogin(){
@@ -74,7 +77,7 @@ extension AppDelegate : OnboardingContainerVCDelegate {
 }
 
 extension AppDelegate : LogoutDelegate {
-    func didLogout() {
+    @objc func didLogout() {
         setRootViewController(loginViewController)
     }
 }

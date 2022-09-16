@@ -48,6 +48,7 @@ extension LoginView {
         tfPassword.placeholder = "Password"
         tfPassword.isSecureTextEntry = true  // make words masked
         tfPassword.delegate = self
+        tfPassword.enablePasswordToggle()
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill

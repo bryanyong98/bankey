@@ -20,9 +20,20 @@ class AccountSummaryVC: UIViewController {
     let stackView = UIStackView()
     let label = UILabel()
     
+    lazy var btnLogout : UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
+        barButtonItem.tintColor = .label
+        return barButtonItem
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar(){
+        navigationItem.rightBarButtonItem = btnLogout
     }
 }
 
@@ -119,5 +130,12 @@ extension AccountSummaryVC {
         accounts.append(masterCard)
         accounts.append(investment1)
         accounts.append(investment2)
+    }
+}
+
+// MARK: - Actions
+extension AccountSummaryVC {
+    @objc private func logoutTapped(){
+        NotificationCenter.default.post(name: .logout, object: nil)
     }
 }
