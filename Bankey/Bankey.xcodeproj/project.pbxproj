@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E4A909C28C63989009BF7A0 /* OnboardingContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4A909B28C63989009BF7A0 /* OnboardingContainerVC.swift */; };
 		4E4A90A028C64137009BF7A0 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4A909F28C64137009BF7A0 /* OnboardingVC.swift */; };
+		4E76142228D6EE9C00A0D6CE /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */; };
 		4E7FE7A928C4A74800D35AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FE7A828C4A74800D35AB9 /* AppDelegate.swift */; };
 		4E7FE7AD28C4A74800D35AB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FE7AC28C4A74800D35AB9 /* LoginViewController.swift */; };
 		4E7FE7B228C4A74C00D35AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FE7B128C4A74C00D35AB9 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		4E4A909B28C63989009BF7A0 /* OnboardingContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerVC.swift; sourceTree = "<group>"; };
 		4E4A909F28C64137009BF7A0 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		4E7FE7A528C4A74800D35AB9 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7FE7A828C4A74800D35AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7FE7AC28C4A74800D35AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		4E76142028D6EE7600A0D6CE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4E7FE79C28C4A74800D35AB9 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		4E7FE7A728C4A74800D35AB9 /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				4E76142028D6EE7600A0D6CE /* Components */,
 				4E7FE7C128C4AA2F00D35AB9 /* Login */,
 				4E4A909A28C6392A009BF7A0 /* Onboarding */,
 				4EA4078128CDA300003EA5A1 /* AccountSummary */,
@@ -307,6 +318,7 @@
 				4EEACDDB28CF754900D55D12 /* DecimalUtils.swift in Sources */,
 				4ED1EA4828D42C7D00A82124 /* NSNotificationName.swift in Sources */,
 				4E4A909C28C63989009BF7A0 /* OnboardingContainerVC.swift in Sources */,
+				4E76142228D6EE9C00A0D6CE /* ShakeyBellView.swift in Sources */,
 				4EA4078F28CDC566003EA5A1 /* AccountSummaryCell.swift in Sources */,
 				4E4A90A028C64137009BF7A0 /* OnboardingVC.swift in Sources */,
 				4E946CA528CCA782001E6FAB /* MainViewController.swift in Sources */,
