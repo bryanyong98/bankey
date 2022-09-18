@@ -43,7 +43,12 @@ extension ShakeyBellView {
         let image = UIImage(systemName: "bell.fill")!.withTintColor(.white, renderingMode: .alwaysOriginal)
         imgView.image = image
         
-
+        btnBadge.translatesAutoresizingMaskIntoConstraints = false
+        btnBadge.backgroundColor = .systemRed
+        btnBadge.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        btnBadge.layer.cornerRadius = btnHeight/2
+        btnBadge.setTitle("9", for: .normal)
+        btnBadge.setTitleColor(.white, for: .normal)
     }
     
     func layout() {
@@ -58,6 +63,13 @@ extension ShakeyBellView {
             imgView.widthAnchor.constraint(equalToConstant: 24)
         ])
         
+        // Button badge
+        NSLayoutConstraint.activate([
+            btnBadge.topAnchor.constraint(equalTo: imgView.topAnchor),
+            btnBadge.leadingAnchor.constraint(equalTo: imgView.trailingAnchor, constant: -9),
+            btnBadge.widthAnchor.constraint(equalToConstant: 16),
+            btnBadge.heightAnchor.constraint(equalToConstant: 16)
+        ])
     }
     
 }
