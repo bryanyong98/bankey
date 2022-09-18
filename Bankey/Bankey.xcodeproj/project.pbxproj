@@ -12,6 +12,8 @@
 		4E76142228D6EE9C00A0D6CE /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */; };
 		4E76142628D707C400A0D6CE /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76142528D707C300A0D6CE /* Date+Utils.swift */; };
 		4E76142A28D70A0800A0D6CE /* AccountSummaryVC+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76142928D70A0800A0D6CE /* AccountSummaryVC+Networking.swift */; };
+		4E76143428D71A5100A0D6CE /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76143328D71A5100A0D6CE /* ProfileTests.swift */; };
+		4E76143A28D71B2C00A0D6CE /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E76143928D71B2C00A0D6CE /* AccountTests.swift */; };
 		4E7FE7A928C4A74800D35AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FE7A828C4A74800D35AB9 /* AppDelegate.swift */; };
 		4E7FE7AD28C4A74800D35AB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FE7AC28C4A74800D35AB9 /* LoginViewController.swift */; };
 		4E7FE7B228C4A74C00D35AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FE7B128C4A74C00D35AB9 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		4E76142528D707C300A0D6CE /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		4E76142928D70A0800A0D6CE /* AccountSummaryVC+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryVC+Networking.swift"; sourceTree = "<group>"; };
+		4E76143328D71A5100A0D6CE /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		4E76143928D71B2C00A0D6CE /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		4E7FE7A528C4A74800D35AB9 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7FE7A828C4A74800D35AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E7FE7AC28C4A74800D35AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,22 @@
 				4E76142128D6EE9C00A0D6CE /* ShakeyBellView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		4E76143128D71A2300A0D6CE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4E76143228D71A2B00A0D6CE /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				4E76143328D71A5100A0D6CE /* ProfileTests.swift */,
+				4E76143928D71B2C00A0D6CE /* AccountTests.swift */,
+			);
+			path = AccountSummary;
 			sourceTree = "<group>";
 		};
 		4E7FE79C28C4A74800D35AB9 = {
@@ -207,6 +227,8 @@
 		4EEACDE528CF7F0D00D55D12 /* BankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				4E76143228D71A2B00A0D6CE /* AccountSummary */,
+				4E76143128D71A2300A0D6CE /* Utils */,
 				4EEACDE628CF7F0D00D55D12 /* BankeyUnitTests.swift */,
 				4EEACDE828CF7F0D00D55D12 /* Info.plist */,
 				4EEACDF028D238B500D55D12 /* CurrencyFormatterTests.swift */,
@@ -340,6 +362,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E76143428D71A5100A0D6CE /* ProfileTests.swift in Sources */,
+				4E76143A28D71B2C00A0D6CE /* AccountTests.swift in Sources */,
 				4EEACDE728CF7F0D00D55D12 /* BankeyUnitTests.swift in Sources */,
 				4EEACDF128D238B500D55D12 /* CurrencyFormatterTests.swift in Sources */,
 			);
