@@ -31,7 +31,6 @@ class AccountSummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupNavigationBar()
     }
     
     func setupNavigationBar(){
@@ -42,6 +41,7 @@ class AccountSummaryVC: UIViewController {
 extension AccountSummaryVC {
     
     private func setup(){
+        setupNavigationBar()
         setupTableView()
         setupTableHeaderView()
         fetchDataAndLoadViews()
@@ -69,6 +69,9 @@ extension AccountSummaryVC {
     
     private func fetchDataAndLoadViews() {
         
+        let group = DispatchGroup()
+        
+        group.enter()
         fetchProfile(forUserId: "1") { result in
             switch result {
             case .success(let profile):
@@ -79,8 +82,10 @@ extension AccountSummaryVC {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            group.leave()
         }
 
+        group.enter()
         fetchAccounts(forUserId: "1") { result in
             switch result {
             case .success(let accounts):
@@ -91,6 +96,11 @@ extension AccountSummaryVC {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            group.leave()
+        }
+        
+        group.notify(queue: .main){
+            self.tableView.reloadData()
         }
     }
     
