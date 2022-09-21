@@ -26,6 +26,16 @@ class AccountSummaryVC: UIViewController {
     let refreshControl = UIRefreshControl()
     var isLoaded = false
     
+    // Networking
+    var profileManager : ProfileManageable = ProfileManager()
+    
+    // Error alert
+    lazy var errorAlert : UIAlertController = {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        return alert
+    }()
+    
     lazy var btnLogout : UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
         barButtonItem.tintColor = .label
@@ -91,29 +101,9 @@ extension AccountSummaryVC {
         
         let group = DispatchGroup()
         
-        group.enter()
-        fetchProfile(forUserId: "1") { result in
-            switch result {
-            case .success(let profile):
-                self.profile = profile
-            case .failure(let error):
-                self.displayError(error)
-            }
-            group.leave()
-        }
+        fetchProfile(group: group, userId: "1")
+        fetchAccounts(group: group, userId: "1")
 
-        group.enter()
-        fetchAccounts(forUserId: "1") { result in
-            switch result {
-            case .success(let accounts):
-                self.accounts = accounts
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-            group.leave()
-        }
-        
         group.notify(queue: .main){
             self.tableView.refreshControl?.endRefreshing()
             guard let profile = self.profile else { return }
@@ -123,6 +113,33 @@ extension AccountSummaryVC {
             self.configureTableCells(with: self.accounts)
             self.tableView.reloadData()
         }
+    }
+    
+    private func fetchProfile(group: DispatchGroup, userId: String){
+        group.enter()
+        profileManager.fetchProfile(forUserId: "1") { result in
+            switch result {
+            case .success(let profile):
+                self.profile = profile
+            case .failure(let error):
+                self.displayError(error)
+            }
+        }
+        group.leave()
+    }
+    
+    private func fetchAccounts(group: DispatchGroup, userId: String){
+        group.enter()
+        fetchAccounts(forUserId: "1") { result in
+            switch result {
+            case .success(let accounts):
+                self.accounts = accounts
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        group.leave()
     }
     
     private func configureTableHeaderView(with profile: Profile) {
@@ -139,16 +156,18 @@ extension AccountSummaryVC {
     }
     
     private func showErrorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
+        errorAlert.title = title
+        errorAlert.message = message
+        present(errorAlert, animated: true, completion: nil)
     }
     
     private func displayError(_ error: NetworkError){
+
+        let titleAndMessage = getTitleAndMessage(for: error)
+        self.showErrorAlert(title: titleAndMessage.0, message: titleAndMessage.1)
+    }
+    
+    private func getTitleAndMessage(for error: NetworkError) -> (String, String){
         let title: String
         let message: String
         
@@ -162,7 +181,7 @@ extension AccountSummaryVC {
             message = "Ensure you are connected to the internet. Please try again."
         }
         
-        self.showErrorAlert(title: title, message: message)
+        return (title, message)
     }
     
     private func setupTableHeaderView(){
@@ -203,6 +222,7 @@ extension AccountSummaryVC : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
 // MARK: - Actions
 extension AccountSummaryVC {
     @objc private func logoutTapped(){
@@ -222,3 +242,14 @@ extension AccountSummaryVC {
         isLoaded = false
     }
 }
+
+extension AccountSummaryVC {
+    func titleAndMessageForTesting(for error: NetworkError) -> (String, String){
+        return getTitleAndMessage(for: error)
+    }
+    
+    func forceFetchProfile(){
+        fetchProfile(group: DispatchGroup(), userId: "1")
+    }
+}
+
